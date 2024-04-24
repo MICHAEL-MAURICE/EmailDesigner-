@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="./mail.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Content</title>
+    <script src="main.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+
+
+
+
+
+#SavedContent {
+          
+            
+            table-layout: fixed;
+            background-color: #FDFDFD;
+            padding-bottom: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- First Half Content -->
+            <div class="col-md-6">
+                <div >
+                    <h1 class="title">Email Designer</h1>
+                </div>
+                <div class="content p-3">
+                    <h4 >Colors</h4>
+                    <div style="border: 1px solid black;">
+                        <label for="header-color">Change Header and Footer Color:</label>
+                        <input type="color" id="header-color" class="color-picker" onchange="changeHeaderColor()">
+                <br>
+                       
+          
+                    </div>
+
+                    <h4 >BorderStyle</h4>
+                    <div style="border: 1px solid black;">
+                        <button onclick="changeBorderStyle('dotted')">Dotted</button>
+                        <button onclick="changeBorderStyle('dashed')">Dashed</button>
+                        <button onclick="changeBorderStyle('solid')">Solid</button>
+<br>
+<label for="border-thickness">Border Thickness:</label>
+<input type="number" disabled id="border-thickness" min="1" value="1" onchange="changeBorderThickness(event)">
+<br>
+<label for="border-color">Change Border Color:</label>
+<input type="color" disabled id="border-color" class="color-picker" onchange="changeBorderColor(event)">
+                    </div>
+
+
+                    <h4 >Show Data</h4>
+                    <div style="border: 1px solid black;">
+                        <label>
+                            <input type="checkbox" id="companyNameCheckbox" onchange="toggleElementVisibility('companyName')"> Show/Hide Company Name
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="branchNameCheckbox" onchange="toggleElementVisibility('branchName')"> Show/Hide Branch Name
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="parentNameCheckbox" onchange="toggleElementVisibility('parentName')"> Show/Hide Parent Name
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="parentIdCheckbox" onchange="toggleElementVisibility('parentId')"> Show/Hide Parent Id
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="studentIdCheckbox" onchange="toggleElementVisibility('studentId')"> Show/Hide Student Id
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="studentNameCheckbox" onchange="toggleElementVisibility('studentName')"> Show/Hide Student Name
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <input type="checkbox" id="gradeCheckbox" onchange="toggleElementVisibility('grade')"> Show/Hide Grade
+                        </label>
+                        
+          
+                    </div>
+
+                    <h4 >Text</h4>
+                    <div style="border: 1px solid black;">
+                        <label for="text-color">Change Text Color:</label>
+                        <input type="color" id="text-color" class="color-picker" onchange="changeTextColor()">
+                        <br>
+                        
+                        <label for="fontSelector"> Font Family:</label>
+                        <select id="fontSelector" onchange="changeFontFamily()">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Lucida Console">Lucida Console</option>
+                            <option value="Palatino Linotype">Palatino Linotype</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Book Antiqua">Book Antiqua</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            
+                        </select>
+                        <br>
+                        
+                       
+                     
+                        
+          
+                    </div>
+
+
+
+                    <h4 >Header</h4>
+                    <div style="border: 1px solid black;">
+                        <label for="text-color">Hide header:</label>
+                        <input type="checkbox" id="reminderCheckbox" onchange="toggleReminderVisibility()">
+                        <br>
+                        <textarea id="newText" rows="4" cols="50" placeholder="Enter new text..." style="display: none;" ></textarea>
+
+                        
+                        <br>
+                        
+                       
+                     
+                        
+          
+                    </div>
+
+
+                </div>
+
+
+
+                
+
+
+                <div class="text-center">
+
+                    <button class="btn btn-outline-primary  rounded-pill"  onclick="saveRenderedHTML()">Save Template </button>
+                </div>
+                
+            </div>
+            <!-- Second Half Content -->
+            <div class="col-md-6">
+               
+                <div>
+                
+<center   id="SavedContent" style='   width: 100%; table-layout: fixed; background-color: #FDFDFD; padding-bottom: 10px; '>
+  
+  
+    <table  style='margin: 0 auto;
+    width: 100%;
+    max-width: 795px;
+    background-color: #FDFDFD;
+    border-spacing: 0;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+    font-style: normal;
+    color: #4a4a4a;'
+        width='100%'  id="borderstyle"   >
+        <tr>
+            <td class="header-Footer" style='background-color: #853CF7;'>
+                <table>
+                    <tr>
+                        <td style=' height: 56px;'> </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table  class="" style='margin-top: 40px; width: 100%; '>
+                    <tr class=" d-flex justify-content-between">
+                        <td  class=" " >
+                            <img src='https://api.klickit.co/images/emailslogos/Logoingrey.png' alt='Klickit Logo'
+                                width='140' height='55' style='display: block;'>
+                        </td>
+                
+                     <!--
+<td  class="" >
+                            <img src='https://api.klickit.co/images/emailslogos/Logoingrey.png' alt='Klickit Logo'
+                                width='140' height='55' style='display: block;'>
+                        </td>
+
+
+                     -->   
+                    </tr>
+                </table>
+                
+                
+                
+                
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style=' margin-left: 35px; margin-bottom: 25px;'>
+                    <tr style='display: inline-block; vertical-align: top; width: fit-content;'>
+                        <td>
+                            <p   id="reminderText" class="text-color" style=' font-weight: 700; font-size: 24px; line-height: 48px; color: #333333;'>
+                                A reminder of your total outstanding
+                            </p>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td style='background-color: #F7F8FA; margin-left: 40px; margin-right: 40px; margin-bottom: 200px;' >
+                <!-- <div height='0px' style='background-color: #F7F8FA; margin-left: 40px; margin-right: 40px;'>
+                  </div> -->
+
+                  <table width="100%">
+                    <tr>
+                        <td style="display: flex; justify-content: space-between;">
+                            <table class="col-6" style="margin-right: 20px; vertical-align: top;">
+                                <tr style="font-size: 18px; line-height: 36px; color: #333333;">
+                                    <td style="width: 200px;">
+                                        <p style="font-weight: 700; margin-top: 24px; margin-left: 30px;">
+                                            Total Amount
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="col-6" style="vertical-align: top;">
+                                <tr style="font-size: 18px; line-height: 36px; color: #333333;">
+                                    <td>
+                                        <p style="font-weight: 700; margin-top: 24px; margin-right: 20px;">
+                                            EGP Data
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div style='height: 32px;background-color: transparent;' >
+
+                </div>
+            </td>
+        </tr>
+
+        <tr >
+            <td style='border:2px solid #F1F2F6;'>
+             <ul style='display: flex;align-items:center ;border-bottom: 1px solid #F1F2F6 ;padding-top: 24px; padding-bottom: 24px;' >                  
+                <li style='list-style: none;' >
+                    <p   class="text-color"  id="companyName"  style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px;' >Company Name:<span style='font-size: 16px;font-weight: 700;margin-left: 16px;'>"CompanyName"</span> </p>
+                    <p  class="text-color" id="branchName" style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px;' >Branch Name:<span style='font-size: 16px;font-weight: 700;margin-left: 16px;'>"SchoolName"</span> </p>
+                    <p  class="text-color" id="parentName" style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px;' >Parent Name:<span style='font-size: 16px;font-weight: 700;margin-left: 16px;'>"ParentName"</span> </p>
+                    <p    class="text-color" id="parentId"style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px;' >Parent Id:<span style='font-size: 16px;font-weight: 700;margin-left: 16px;'>"CustomParentId"</span> </p>
+                </li>
+             </ul>
+
+             <ul style='display: flex;align-items:center ;border-bottom: 1px solid #F1F2F6 ; padding-top: 24px;padding-bottom: 24px;'>
+                <li style='list-style: none;'>
+                    <p  class="text-color"  id="studentId" style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px;' > Student Id: <span style='font-size: 16px;font-weight: 700;margin-left: 16px;'>"CustomStudentId"</span> </p>
+              
+                    <p  class="text-color"   id="studentName" style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 8px; ' >Student Name:  <span  class="text-color" style='font-size: 18px;font-weight: 500;margin-left: 16px;'> "StudentName"</span></p>
+                    <p    class="text-color" id="grade" style='font-size: 13px;font-weight: 500;margin-top: 0;margin-bottom: 0;' > Grade <span style='font-size: 14px;font-weight: 400;margin-left: 16px;'>"Grade "</span> </p>
+           
+                </li>
+             </ul>
+
+              <table cellpadding='0' cellspacing='0' width='100%'
+                    style='max-width: 750px;border-collapse: collapse; border: none;'>
+                    <thead style=' font-weight: 700; font-size: 12px; line-height: 14px; color: #4D4D4D'>
+                        <tr style='background: #F1F2F6; height: 40px;'>
+                            <th
+                                style='text-align: left; padding: 13px 10px 10px 20px; border-bottom: 1px solid #E5E5E5; width: 33%;'>
+                                Payment Name
+                            </th>
+                            <th
+                                style='text-align: center; padding: 13px; border-bottom: 1px solid #E5E5E5; width: 33%;'>
+                                Due Date
+                            </th>
+                            <th
+                                style='text-align: center; padding: 13px; border-bottom: 1px solid #E5E5E5; width: 33%;'>
+                                Amount
+                            </th>
+                        </tr>
+                    </thead>
+
+                    
+                    <tbody style=' font-weight: 500; font-size: 16px; line-height: 19px; color: #333333;'>  </tbody>
+                    <tfoot>
+
+                        <tr  class="text-color" style=' font-weight: 700; font-size: 18px; line-height: 22px; color: #333333;'>
+                            <td       colspan='2'   style='text-align: right; padding: 16px 0px 10px 0px;'>
+                                Total Amount 
+                            </td>
+                            <td   class="text-color" style='text-align: center; padding: 16px 0px 10px 0px;'>EGP " Data"</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+
+             
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table          align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr  >
+                        <td    align="center" style="max-width: 530px;">
+                            <a  class="header-Footer"  href=" + url + "
+                                style="display: inline-block; width: 300px; margin-top: 48px; margin-bottom: 56px; background-color: rgb(133, 60, 247); color: #fdfdfd; text-align: center; text-decoration: none; padding-top: 10px; padding-bottom: 20px; font-size: 20px; font-weight: 500; line-height: 20px;">
+                                <span    style="padding: 15px;">
+                                    <img    src="https://api.klickit.co/images/emailslogos/downloadInvoice.png" alt="Icon" style="width: 24px; height: 24px;">
+                                </span>  <span class="text-color" > Pay Now  </span> 
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                
+            </td>
+        </tr>
+        <tr>
+            <td    class="mb-3 h-100  header-Footer" style="background-color: #5800bf;  ">
+                <div class="container d-flex flex-column justify-content-center align-items-center h-100">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-white font-weight-bold mt-3 mb-0" style="font-size: 16px;">
+                                Find us online
+                            </p>
+                            <div class="d-flex ">
+                                <a href="https://www.linkedin.com/company/klickitegypt" class="mr-2">
+                                    <img src="https://api.klickit.co/images/emailslogos/facebook2.png" style="width: 18px; height: 18px;" alt="Facebook">
+                                </a>
+                                <a href="https://www.linkedin.com/company/klickitegypt" class="mr-2">
+                                    <img src="https://api.klickit.co/images/emailslogos/instagram2.png" style="width: 18px; height: 18px;" alt="Instagram">
+                                </a>
+                                <a href="https://www.linkedin.com/company/klickitegypt">
+                                    <img src="https://api.klickit.co/images/emailslogos/linkedin2.png" style="width: 18px; height: 18px;" alt="LinkedIn">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-white font-weight-bold  mt-3 mb-0" style="font-size: 16px;">
+                                Get in Touch
+                            </p>
+                            <div class="d-flex align-items-center ">
+                                <div class="img mr-2">
+                                    <img src="https://api.klickit.co/images/emailslogos/mail.png" style="width: 18px; height: 18px;" alt="Mail">
+                                </div>
+                                <p class="footerItem2 mb-0" style="font-weight: 500; font-size: 14px; color: #fdfdfd;">
+                                    <a href="mailto:info@klickit.co" style="text-decoration: none; color: #fdfdfd;">
+                                        info@klickit.co
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        
+       
+        
+    </table>
+
+        
+</center>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
